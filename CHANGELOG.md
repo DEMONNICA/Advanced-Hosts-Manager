@@ -45,6 +45,7 @@
 > - Changed `notify_status` in `GOBLOK` to use temp file for notification delivery.
 > - Changed `GOBLOK` main menu with `[0]` Help and `[x]` Exit options.
 > - Changed `cp` in `GOBLOK` with `2>/dev/null` to suppress same-file warning.
+> - Changed banner image in `README.md` and `module.prop`.
 > - Fixed `NAME_MODULE` undefined in `post_install_actions` in `customize.sh`.
 > - Fixed `BLOCKED_COUNT` recalculated on every menu iteration in `GOBLOK`.
 > - Fixed stdin consumption from `| while read` pipeline in `GOBLOK`.
