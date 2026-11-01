@@ -1,4 +1,4 @@
-> <img width="3264" height="1836" alt="Image" src="https://github.com/user-attachments/assets/84c9883a-2561-4743-80e9-e620287a64e2" />
+> <img width="3264" height="2176" alt="Image" src="https://github.com/user-attachments/assets/6828283a-2430-43ae-8dc9-d57ad306568a" />
 
 > [!NOTE]
 > ```
@@ -16,32 +16,11 @@
 > 7. Custom Hosts Source Management to add, remove, and rebuild your own sources anytime.
 > 8. Manual Domain Blocking to instantly block individual domains without a full rebuild.
 > 9. Whitelist Manager to exclude specific domains from the block list.
-> 10. Real-time Blocking Statistics shown live in the root manager description and main menu.
+> 10. Real-time Blocking Statistics shown live in the root manager description and WebUI.
 
 > [!TIP]
 > 1. Supports `APatch` `KernelSU` `Magisk` and their forks.
 > 2. Minimum Android `10 SDK 29`.
-> 3. To run the module, open **Termux** and follow the steps below:
->    - **Method 1** — Enter root shell first, then launch the tool:
->      ```sh
->      su
->      ```
->      After pressing **Enter**, your prompt will change to `#`, meaning you are now in root mode. Then type:
->      ```sh
->      GOBLOK
->      ```
->      Press **Enter** to launch the hosts management menu.
->    - **Method 2** — Run directly in a single command:
->      ```sh
->      su -c GOBLOK
->      ```
->    > Both methods require root access. A root manager such as Magisk, KernelSU, or APatch must be installed on your device.
-> 4. If `GOBLOK` command is not found, install **Meta** to enable system binary overlay support:
->    - [Download Meta — Hybrid Mount](https://github.com/Hybrid-Mount/meta-hybrid_mount/releases)
-> 5. If `GOBLOK` is still not accessible after installing Meta, run it directly via full path:
->    ```sh
->    su -c /data/adb/modules/AHM/system/bin/GOBLOK
->    ```
 
 > [!WARNING]
 > 1. If you do not fully understand what a modification does, do not apply it.
