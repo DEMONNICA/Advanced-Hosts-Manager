@@ -2,6 +2,40 @@
 > - All significant changes to this project will be documented here.
 ---
 
+> [5.0.0]
+>
+> - Added WebUI to manage the module directly from the root manager app.
+> - Added `ahm-core.sh` as the shared core for hosts logic (config, download, pipeline, apply, whitelist, manual blocks, pause/resume) used by the WebUI backend `ahm-actions.sh`.
+> - Added WebUI files extraction and permission handling in `customize.sh`.
+> - Added pause and resume blocking to temporarily disable blocking and restore the last applied block list without downloading again, kept across reboots until resumed manually.
+> - Added manual blocks and custom host entries (any IPv4 address and domain), stored separately from the downloaded sources and re-added whenever the hosts file is rebuilt, including while blocking is paused.
+> - Added tracking of the last sync time, the latest manual changes, and the download result of each source.
+> - Added a cached hosts list so the hosts view opens and searches without scanning the whole hosts file.
+> - Added backup and restore of manual blocks, whitelist, custom entries, and custom sources, reapplied without downloading again.
+> - Added domain status check reporting whether a domain is whitelisted, manually blocked, blocked by a source, or not blocked.
+> - Added author field verification in `verify_module_id` in `verify.sh` to detect forked or re-authored copies of the module.
+> - Added Android SDK validation in `device_info` in `customize.sh` to check for empty or non-numeric values before comparison.
+> - Added `FolkSU`, `Aster`, and `BakaSU` detection in `detect_root_all` in `customize.sh`, identifying the renamed `ReSukiSU` build by reading its APK strings.
+> - Changed RAM total and available labeling in `device_info` in `customize.sh` from duplicated if-elif chains to the reusable `ram_label` function, reducing label granularity for the 2GB, 3GB, 16GB, and 32GB tiers.
+> - Changed `count_real_blocked_entries` in `ahm-core.sh` to count each blocked domain once (IPv4 rows only) instead of counting the `::` / `::1` pair as extra entries.
+> - Changed the `FolkLite` entry in the APatch variants of `detect_root_all` in `customize.sh` to `FinaSU` (`me.yuki.fina`).
+> - Changed the devil name list shown during installation in `customize.sh`: replaced `Lucius` with `Baal`.
+> - Changed GitHub link in the hosts file signature from `DEMONICCA` to `DEMONNICA`.
+> - Changed `apply_whitelist` to remove all whitelisted domains in one `awk` pass instead of one pass per domain.
+> - Changed config and `module.prop` loading in `ahm-core.sh` to use shell built-ins instead of repeated `grep` and `cut` processes.
+> - Changed `block_domain` to remove the domain from the whitelist when it is blocked manually, so a domain cannot be in both lists.
+> - Changed domain input in manual block and whitelist actions to lowercase before validation.
+> - Fixed `device_capitalized` not declared as `local` in `device_info` in `customize.sh`.
+> - Fixed whitelisted domains reappearing after removing a custom source because `apply_whitelist` was not applied during the rebuild.
+> - Fixed manually blocked domains being inserted between the signature lines and disappearing after every rebuild.
+> - Fixed raw `chmod: Read-only file system` error shown when the system partition is read-only.
+> - Fixed the notification always showing "Hosts file updated successfully" regardless of the action performed, such as pause, resume, or a manual block.
+> - Fixed `unblock_domain` treating dots in a domain as wildcard characters when removing it from the hosts file.
+> - Removed the `GOBLOK` Termux interface and its `system/bin/GOBLOK` install from `customize.sh`, as all management is now done from the WebUI.
+> - Removed the `AHM.jpg` picture from the hosts update notification, along with its extraction in `customize.sh` and cleanup in `uninstall.sh`.
+> - Removed `VortexSU` and `Kokoro Mask` detection from `detect_root_all` in `customize.sh`.
+---
+
 > [3.5.0]
 >
 > - Added `WHITELIST_FILE` and `CONFIG_FILE` variables in `GOBLOK`.
