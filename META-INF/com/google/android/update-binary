@@ -1,7 +1,10 @@
 #!/sbin/sh
 umask 022
 
-ui_print() { echo "$1"; }
+ui_print() {
+  echo "$1"
+}
+
 require_new_magisk() {
   ui_print "*******************************"
   ui_print " Please install Magisk v20.4+! "
@@ -9,16 +12,20 @@ require_new_magisk() {
   exit 1
 }
 
-OUTFD=$2
-ZIPFILE=$3
+OUTFD="$2"
+ZIPFILE="$3"
 
 mount /data 2>/dev/null
 
-[ -f /data/adb/magisk/util_functions.sh ] || require_new_magisk
+if [ ! -f "/data/adb/magisk/util_functions.sh" ]; then
+  require_new_magisk
+fi
 
-. /data/adb/magisk/util_functions.sh
+. "/data/adb/magisk/util_functions.sh"
 
-[ $MAGISK_VER_CODE -lt 20400 ] && require_new_magisk
+if [ -z "$MAGISK_VER_CODE" ] || [ "$MAGISK_VER_CODE" -lt 20400 ]; then
+  require_new_magisk
+fi
 
 install_module
 
